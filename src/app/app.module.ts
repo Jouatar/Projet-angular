@@ -7,17 +7,28 @@ import { HomeComponent } from './home/home.component';
 import { LoggedPageComponent } from './logged-page/logged-page.component';
 import { FormLoginComponent } from './form-login/form-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DeckComponent } from './deck/deck.component';
+import { CarteComponent } from './carte/carte.component';
+
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoggedPageComponent,
-    FormLoginComponent
+    FormLoginComponent,
+    DeckComponent,
+    CarteComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

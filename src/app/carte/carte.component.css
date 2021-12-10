@@ -1,0 +1,22 @@
+.pokemon {
+  display: flex;
+  flex-direction: row;
+}
+
+.card {
+  padding: 20px;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.center-card {
+  display: flex;
+  justify-content: center;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}

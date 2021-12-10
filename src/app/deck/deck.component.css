@@ -1,0 +1,9 @@
+.attaque {
+  display: flex;
+  padding: 5px;
+}
+
+.min-attaque {
+  background-color: grey;
+  margin-right: 10px;
+}
