@@ -28,7 +28,7 @@ export class FormLoginComponent implements OnInit {
     const newUser = new User(
       formValue['username'],100
     );
-    this.router.navigate(['logged-page']);
+    this.router.navigate(['home']);
   }
 }
 
