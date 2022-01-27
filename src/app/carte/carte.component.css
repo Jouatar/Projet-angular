@@ -20,3 +20,11 @@
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
+
+
+
+.points {
+  display: flex;
+  justify-content: space-evenly ;
+  margin-bottom: 2px;
+}
