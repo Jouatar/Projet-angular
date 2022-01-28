@@ -1,0 +1,14 @@
+.pokemon_card {
+    width: 160px;
+}
+
+.name{
+    text-transform: capitalize;
+}
+
+.stats > div {
+    display:flex;
+    width:100%;
+    justify-content: space-between;
+    align-items: center;
+}

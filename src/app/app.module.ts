@@ -8,12 +8,14 @@ import { HomeComponent } from './home/home.component';
 import { LoggedPageComponent } from './logged-page/logged-page.component';
 import { FormLoginComponent } from './form-login/form-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoggedPageComponent,
-    FormLoginComponent
+    FormLoginComponent,
+    PokemonCardComponent
   ],
   imports: [
     BrowserModule,
