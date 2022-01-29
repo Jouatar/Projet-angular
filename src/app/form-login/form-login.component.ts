@@ -13,7 +13,7 @@ import { ApiLogin, UserServiceService } from 'src/app/user-service.service';
 export class FormLoginComponent implements OnInit {
   token: String = "truc";
   userForm: FormGroup = new FormGroup({});
-  constructor(private formBuilder: FormBuilder,private router: Router, private userService: UserServiceService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserServiceService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -28,10 +28,10 @@ export class FormLoginComponent implements OnInit {
   onSubmitForm() {
     const formValue = this.userForm.value;
     const newUser = new User(
-      formValue['username'],100
+      formValue['username'], 100
     );
-    this.userService.login(newUser.getName()).subscribe((data:Boolean) => {
-      if(data){
+    this.userService.login(newUser.getName()).subscribe((data: Boolean) => {
+      if (data) {
         this.router.navigate(['home']);
       }
     });;

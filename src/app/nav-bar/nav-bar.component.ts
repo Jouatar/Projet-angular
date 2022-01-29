@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user.model';
+
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
+  imagePath = "../assets/logo_pokemon.png";
   constructor() { }
 
   ngOnInit(): void {
