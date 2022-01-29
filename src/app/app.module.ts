@@ -10,6 +10,7 @@ import { LoggedPageComponent } from './logged-page/logged-page.component';
 import { FormLoginComponent } from './form-login/form-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { DeckComponent } from './deck/deck.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     LoggedPageComponent,
     FormLoginComponent,
     StoreComponent,
-    NavBarComponent
+    NavBarComponent,
+    DeckComponent,
   ],
   imports: [
     BrowserModule,
