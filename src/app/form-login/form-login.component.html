@@ -1,10 +1,10 @@
 <h1>{{token}}</h1>
 <div class="col-sm-8 col-sm-offset-2">
-    <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
-      <div class="form-group">
-        <label for="username">Utilisateur</label>
-        <input type="text" id="username" class="form-control" formControlName="username">
-      </div>
-      <button type="submit" class="btn btn-primary">Soumettre</button>
-    </form>
-  </div>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+    <div class="form-group">
+      <label for="username">Utilisateur</label>
+      <input type="text" id="username" class="form-control" formControlName="username">
+    </div>
+    <button type="submit" class="btn btn-primary">Soumettre</button>
+  </form>
+</div>

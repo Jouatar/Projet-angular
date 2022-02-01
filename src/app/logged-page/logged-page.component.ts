@@ -7,7 +7,7 @@ import { PokemonService } from 'src/app/pokemon.service';
   styleUrls: ['./logged-page.component.css']
 })
 export class LoggedPageComponent implements OnInit {
-  
+
   constructor(private userService: UserServiceService,private pokemon: PokemonService) { }
 
   ngOnInit(): void {
