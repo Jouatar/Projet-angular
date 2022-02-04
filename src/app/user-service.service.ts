@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {User} from 'src/app/models/user.model';
+import { RefreshService } from 'src/app/refresh.service';
 import { Observable,Subject } from 'rxjs';
 import 'rxjs/add/observable/of';
 
@@ -28,7 +29,7 @@ export interface UserLogin{
 })
 
 export class UserServiceService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private refresh: RefreshService) { }
 
   login(usn : String): Observable<Boolean>{
     var subject = new Subject<boolean>();
@@ -68,7 +69,7 @@ export class UserServiceService {
       if(data.ok){
         dataUpdate = true;
       }
-
+      this.refresh.sendUpdate('updatenavbar');
       subject.next(dataUpdate);
       
     });
