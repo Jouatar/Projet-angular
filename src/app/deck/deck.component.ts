@@ -1,6 +1,7 @@
 import { AppComponent } from './../app.component';
 import { Component, OnInit } from '@angular/core';
 import { NavBarComponent } from './../nav-bar/nav-bar.component';
+import { UserServiceService } from 'src/app/user-service.service';
 
 @Component({
   selector: 'app-deck',
@@ -9,9 +10,14 @@ import { NavBarComponent } from './../nav-bar/nav-bar.component';
 })
 export class DeckComponent implements OnInit {
 
-  constructor() { }
+  cards: Array<string> = [];
+
+  constructor(private userService: UserServiceService) { }
 
   ngOnInit(): void {
+    this.userService.getData().subscribe((data:any) => {
+      this.cards = data.deck;
+    });;
   }
 
 }

@@ -1,6 +1,9 @@
 import { AppComponent } from './../app.component';
 import { Component, OnInit } from '@angular/core';
 import { NavBarComponent } from './../nav-bar/nav-bar.component';
+import { PokemonService } from 'src/app/pokemon.service';
+
+
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
@@ -9,9 +12,19 @@ import { NavBarComponent } from './../nav-bar/nav-bar.component';
 
 export class StoreComponent implements OnInit {
 
-  constructor() { }
+  cards: Array<string> = [];
+
+  constructor(private pokemon: PokemonService) { }
 
   ngOnInit(): void {
+    
   }
+
+  openBooster(){
+    this.pokemon.generateBooster(10).subscribe((data:Array<string>) => {
+      this.cards = data;
+    });;
+  }
+    
 
 }

@@ -1,5 +1,7 @@
 .pokemon_card {
     width: 160px;
+    border: solid 2px #000;
+    padding: 10px;
 }
 
 .name{
