@@ -19,7 +19,7 @@ export class PokemonCardComponent implements OnInit {
   ngOnInit(): void {
 
     this.pokemon.getPokemon(parseInt(this.id_pk)).subscribe((data:any) => {
-      console.log(data);
+      // console.log(data);
       this.name = data.name;
       this.image = data.image;
       this.pv = data.stats.hp;

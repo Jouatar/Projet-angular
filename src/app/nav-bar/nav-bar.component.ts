@@ -15,9 +15,9 @@ export class NavBarComponent implements OnInit {
   usercoin = "";
   private subscriptionName: Subscription;
 
-  constructor(private userService: UserServiceService, private refresh: RefreshService) { 
+  constructor(private userService: UserServiceService, private refresh: RefreshService) {
     this.subscriptionName= this.refresh.getUpdate().subscribe
-             (message => { 
+             (message => {
               this.ngOnInit();
     });
   }

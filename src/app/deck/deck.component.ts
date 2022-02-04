@@ -17,6 +17,7 @@ export class DeckComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getData().subscribe((data:any) => {
       this.cards = data.deck;
+      console.log(data.deck);
     });;
   }
 
