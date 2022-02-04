@@ -30,27 +30,36 @@ export class PokemonService {
 
   generateBooster(nb: number): Observable<Array<string>>{
     var subject = new Subject<Array<string>>();
-    var table: Array<string> = [];
-    var returnTable: Array<string> = [];
-    const max = 200;
-    for(var i=0;i<nb; i++){
-      let randomNumber = -1;
-      while(randomNumber < 1){
-        randomNumber = Math.floor(Math.random() * max);
-      }
-      table.push(randomNumber.toString());
-      returnTable.push(randomNumber.toString());
-    }
 
     this.userService.getData().subscribe((data:any) => {
-      data.deck.forEach((item:string) => {
-        table.push(item);
-      })
-      console.log(data);
-      this.userService.update(data.name, (data.coins-10), table).subscribe((data:any) => {
-        subject.next(returnTable);  
-      });;
+      if (data.coins < 10){
+        subject.next([]);
+      } else {
+        var table: Array<string> = [];
+        var returnTable: Array<string> = [];
+        const max = 200;
+        for(var i=0;i<nb; i++){
+          let randomNumber = -1;
+          while(randomNumber < 1){
+            randomNumber = Math.floor(Math.random() * max);
+          }
+          table.push(randomNumber.toString());
+          returnTable.push(randomNumber.toString());
+        }
+
+        this.userService.getData().subscribe((data:any) => {
+          data.deck.forEach((item:string) => {
+            table.push(item);
+          })
+          console.log(data);
+          this.userService.update(data.name, (data.coins-10), table).subscribe((data:any) => {
+            subject.next(returnTable);  
+          });;
+        });;
+      }
     });;
+    
     return subject.asObservable() ;
   }
+
 }
