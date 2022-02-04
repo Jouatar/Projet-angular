@@ -13,11 +13,12 @@ import { PokemonService } from 'src/app/pokemon.service';
 export class StoreComponent implements OnInit {
 
   cards: Array<string> = [];
+  imagePath = "../assets/deck.jpg";
 
   constructor(private pokemon: PokemonService) { }
 
   ngOnInit(): void {
-    
+
   }
 
   openBooster(){
@@ -25,6 +26,6 @@ export class StoreComponent implements OnInit {
       this.cards = data;
     });;
   }
-    
+
 
 }

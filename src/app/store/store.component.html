@@ -1,5 +1,5 @@
 <app-nav-bar></app-nav-bar>
-<button (click)="openBooster()">BOOSTER</button>
-<div class="container">
+<img [src]="imagePath" (click)="openBooster()" alt="Deck" style="width:200px;" class="rounded-pill mx-auto d-block" />
+<div class="container mt-5">
   <app-pokemon-card *ngFor="let card of cards" id="card{{card}}" [id_pk]="card"></app-pokemon-card>
 </div>
