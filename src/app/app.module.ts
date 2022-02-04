@@ -18,7 +18,7 @@ import { DeckComponent } from './deck/deck.component';
     HomeComponent,
     LoggedPageComponent,
     FormLoginComponent,
-    PokemonCardComponent
+    PokemonCardComponent,
     StoreComponent,
     NavBarComponent,
     DeckComponent,
