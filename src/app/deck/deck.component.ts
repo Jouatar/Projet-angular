@@ -13,12 +13,12 @@ export class DeckComponent implements OnInit {
   cards: Array<string> = [];
   @Input() id_pk: string = "182";
   attaque: number = 0;
+  attaqueLimit: number = 100;
   content: Array<number> = [];
 
   constructor(private userService: UserServiceService, private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-
     this.userService.getData().subscribe((data: any) => {
       this.cards = data.deck;
       console.log(this.cards);
@@ -29,23 +29,23 @@ export class DeckComponent implements OnInit {
           // console.log(data.stats.attack);
           // let test = {}
           // test[]
-          console.log(parseInt(data.stats.attack))
-          this.content[parseInt(element)] = parseInt(data.stats.attack);
+          if(data.stats.attack >= this.attaqueLimit){
+            this.content[parseInt(element)] = parseInt(data.stats.attack)
+          }
           console.log(this.content)
-          this.content.filter(e => e >= 60)
-          // console.log(this.attaque);
         })
         console.log(this.content)
       });
-      console.log(this.content);
-      let newcontent = this.content.filter(e => e = 100)
-      console.log(newcontent)
       this.pokemonService.getPokemon(parseInt(this.cards[1])).subscribe((data: any) => {
         console.log("Attaque du pokemon:", this.attaque);
       });
 
 
-    });;
+    })
+    setTimeout(() => {
+      this.content.filter(e => e === 100)
+      console.log(this.content)
+    }, 5000);
   }
 
   // getAttack(id: any) {
