@@ -24,6 +24,7 @@ export class StoreComponent implements OnInit {
   openBooster(){
     this.pokemon.generateBooster(10).subscribe((data:Array<string>) => {
       this.cards = data;
+      console.log(data);
     });;
   }
 

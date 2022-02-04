@@ -1,21 +1,23 @@
 <app-nav-bar></app-nav-bar>
 
+<div ng-app="myApp" ng-controller="myCtrl">
+
 <div class="container-fluid mt-3">
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text">Min Attaque</span>
     </div>
-    <input type="number" class="form-control" id="attack" name="minattack" value="minattack" >
+    <input type="number" ng-model="attackValue" class="form-control" id="attack" name="minattack" value="minattack">
   </div>
 </div>
 
 <div class="container mt-5">
+  <div *ngIf="">
+    <app-pokemon-card *ngFor="let card of cards" id="card{{card}}" [id_pk]="card">
+      <!-- <div *ngIf="card."></div> -->
+    </app-pokemon-card>
+  </div>
   <app-pokemon-card *ngFor="let card of cards" id="card{{card}}" [id_pk]="card">
-    <!-- <div *ngIf="card."></div> -->
   </app-pokemon-card>
 </div>
 
-<script>
-  var a = document.getElementById("attack").value;
-  console.log(a);
-</script>
