@@ -10,8 +10,11 @@
             <li class="nav-item">
                 <a [routerLink]="['/home/store']" class="nav-link">Store</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link">Solde : {{ usercoin }}</a>
+          </li>
         </ul>
         <button [routerLink]="['/home/store']" class="btn btn-success">Bonjour {{ user }}</button>
-        <button [routerLink]="['']" class="btn btn-danger">Disconnect</button>
+        <button [routerLink]="['']" (click)="deleteUser()" class="btn btn-danger">Disconnect</button>
     </div>
 </nav>

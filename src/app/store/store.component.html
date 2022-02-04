@@ -1,5 +1,4 @@
 <app-nav-bar></app-nav-bar>
-<p>store works!</p>
 <button (click)="openBooster()">BOOSTER</button>
 <div class="container">
   <app-pokemon-card *ngFor="let card of cards" id="card{{card}}" [id_pk]="card"></app-pokemon-card>
