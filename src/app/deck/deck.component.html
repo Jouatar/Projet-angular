@@ -3,8 +3,14 @@
 <div ng-app="myApp" ng-controller="myCtrl">
 
 <div class="container-fluid mt-3">
-
-
+  <div class="input-group mb-3">
+    <form (submit)="rebuildCards()">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Min Attaque</span>
+      </div>
+      <input type="number" class="form-control" [(ngModel)]="attaqueLimit" id="attack" name="minattack" value="minattack" >
+    </form>
+  </div>
 </div>
 
 <div class="container mt-5">

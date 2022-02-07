@@ -13,17 +13,38 @@ import { filter } from 'rxjs-compat/operator/filter';
 export class DeckComponent implements OnInit {
   cards: Array<string> = [];
   @Input() id_pk: string = "182";
-  attaque: number = 0;
-  attaqueLimit: number = 100;
-  content: Array<number> = [];
+  attaqueLimit: string = '';
+  attackValue = 0;
 
   constructor(private userService: UserServiceService, private pokemonService: PokemonService) { }
 
 
 
   ngOnInit(): void {
-
+    this.userService.getData().subscribe((data: any) => {
+      this.cards = data.deck;
+    })
   }
+
+  rebuildCards(): void{
+    this.userService.getData().subscribe((data: any) => {
+      this.cards=[]
+      data.deck.forEach((element:any) => {
+        this.pokemonService.getPokemon(parseInt(element)).subscribe((data: any) => {
+          if(data.stats.attack >= this.attaqueLimit){
+            this.cards.push(element);
+          }
+        });
+      });
+    })
+  }
+  // getAttack(id: any) {
+  //   let id_poke = id;
+  //   this.pokemonService.getPokemon(id_poke).subscribe((data:any) => {
+  //     this.attaque = data.stats.attack;
+  //   });;
+  //   return this.attaque;
+  // }
 
 
 }
