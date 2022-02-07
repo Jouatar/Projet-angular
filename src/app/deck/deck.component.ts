@@ -35,13 +35,4 @@ export class DeckComponent implements OnInit {
       });
     })
   }
-  // getAttack(id: any) {
-  //   let id_poke = id;
-  //   this.pokemonService.getPokemon(id_poke).subscribe((data:any) => {
-  //     this.attaque = data.stats.attack;
-  //   });;
-  //   return this.attaque;
-  // }
-
-
 }
