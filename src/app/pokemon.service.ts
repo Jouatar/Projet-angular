@@ -17,7 +17,7 @@ export interface Pokemon{
   providedIn: 'root'
 })
 export class PokemonService {
-  
+
   constructor(private http: HttpClient,private userService: UserServiceService) { }
 
   getPokemon(id: number): Observable<Pokemon>{
@@ -34,6 +34,7 @@ export class PokemonService {
     this.userService.getData().subscribe((data:any) => {
       if (data.coins < 10){
         subject.next([]);
+        alert("Vous n'avez plus d'argent pour acheter des Pokémons!")
       } else {
         var table: Array<string> = [];
         var returnTable: Array<string> = [];
@@ -53,12 +54,12 @@ export class PokemonService {
           })
           console.log(data);
           this.userService.update(data.name, (data.coins-10), table).subscribe((data:any) => {
-            subject.next(returnTable);  
+            subject.next(returnTable);
           });;
         });;
       }
     });;
-    
+
     return subject.asObservable() ;
   }
 
