@@ -42,7 +42,7 @@ export class UserServiceService {
       }
 
       subject.next(dataLogin);
-      
+
     });
     return subject.asObservable() ;
   }
@@ -54,6 +54,7 @@ export class UserServiceService {
     const headers = { 'token': token };
     this.http.get<UserLogin>('https://lostin70s.com/lpwebfront/api/poke-user/user', { headers }).subscribe((data: UserLogin) => {
       subject.next(data);
+      console.log(data)
     });
     return subject.asObservable() ;
   }
@@ -65,13 +66,13 @@ export class UserServiceService {
     const headers = { 'token': token };
     const body = { name: name, coins: coins,deck: deck };
     this.http.put<ApiDelete>('https://lostin70s.com/lpwebfront/api/poke-user', body, { headers }).subscribe((data: ApiDelete) => {
-      
+
       if(data.ok){
         dataUpdate = true;
       }
       this.refresh.sendUpdate('updatenavbar');
       subject.next(dataUpdate);
-      
+
     });
     return subject.asObservable() ;
   }
@@ -82,17 +83,17 @@ export class UserServiceService {
     let token: string = sessionStorage.getItem('token') as string;
     const headers = { 'token': token };
     this.http.delete<ApiDelete>('https://lostin70s.com/lpwebfront/api/poke-user',{ headers }).subscribe((data: ApiDelete) => {
-      
+
       if(data.ok){
         sessionStorage.removeItem('token');
         dataDelete = true;
       }
 
       subject.next(dataDelete);
-      
+
     });
     return subject.asObservable() ;
   }
-  
+
 }
 
