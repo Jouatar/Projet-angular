@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { LoggedPageComponent } from './logged-page/logged-page.component';
 import { FormLoginComponent } from './form-login/form-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { DeckComponent } from './deck/deck.component';
@@ -27,6 +28,7 @@ import { DeckComponent } from './deck/deck.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],

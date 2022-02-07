@@ -12,32 +12,29 @@ import { UserServiceService } from 'src/app/user-service.service';
 export class DeckComponent implements OnInit {
   cards: Array<string> = [];
   @Input() id_pk: string = "182";
-  attaque: number = 0;
-  attaqueLimit: number = 100;
-  content: Array<number> = [];
+  attaqueLimit: string = '';
+  attackValue = 0;
 
   constructor(private userService: UserServiceService, private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
     this.userService.getData().subscribe((data: any) => {
       this.cards = data.deck;
-      console.log(this.cards);
-      this.cards.forEach((element) => {
+    })
+  }
+
+  rebuildCards(): void{
+    this.userService.getData().subscribe((data: any) => {
+      this.cards=[]
+      data.deck.forEach((element:any) => {
         this.pokemonService.getPokemon(parseInt(element)).subscribe((data: any) => {
           if(data.stats.attack >= this.attaqueLimit){
-            this.content[parseInt(element)] = parseInt(data.stats.attack);
+            this.cards.push(element);
           }
         });
       });
-      this.pokemonService.getPokemon(parseInt(this.cards[1])).subscribe((data: any) => {
-        console.log("Attaque du pokemon:", this.attaque);
-      })
     })
-    setTimeout(() => {
-      console.log(this.content);
-    }, 5000);
   }
-
   // getAttack(id: any) {
   //   let id_poke = id;
   //   this.pokemonService.getPokemon(id_poke).subscribe((data:any) => {
