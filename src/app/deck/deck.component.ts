@@ -22,29 +22,19 @@ export class DeckComponent implements OnInit {
     this.userService.getData().subscribe((data: any) => {
       this.cards = data.deck;
       console.log(this.cards);
-      // console.log("Id des Pokemons:", data.deck);
-      // this.cards.filter(e => e.attack >= 60)
       this.cards.forEach((element) => {
         this.pokemonService.getPokemon(parseInt(element)).subscribe((data: any) => {
-          // console.log(data.stats.attack);
-          // let test = {}
-          // test[]
           if(data.stats.attack >= this.attaqueLimit){
-            this.content[parseInt(element)] = parseInt(data.stats.attack)
+            this.content[parseInt(element)] = parseInt(data.stats.attack);
           }
-          console.log(this.content)
-        })
-        console.log(this.content)
+        });
       });
       this.pokemonService.getPokemon(parseInt(this.cards[1])).subscribe((data: any) => {
         console.log("Attaque du pokemon:", this.attaque);
-      });
-
-
+      })
     })
     setTimeout(() => {
-      this.content.filter(e => e === 100)
-      console.log(this.content)
+      console.log(this.content);
     }, 5000);
   }
 
