@@ -3,6 +3,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 95px;
+    justify-content: center;
 }
 
 form{
