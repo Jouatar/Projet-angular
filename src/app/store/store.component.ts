@@ -27,12 +27,4 @@ export class StoreComponent implements OnInit {
       console.log(data);
     });;
   }
-
-  // addPokemonToDeck() {
-  //   this.pokemon.addPokemon().subscribe((data:Array<string>) => {
-  //     this.cards = data;
-  //     console.log(data);
-  //   });;
-  // }
-
 }

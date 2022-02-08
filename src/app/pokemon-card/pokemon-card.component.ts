@@ -14,6 +14,7 @@ export class PokemonCardComponent implements OnInit {
   @Input() isStore: boolean = false;
   name: string = "";
   image: string = "";
+  type: string = "";
   pv: number = 0;
   defense: number = 0;
   attaque: number = 0;
@@ -30,20 +31,21 @@ export class PokemonCardComponent implements OnInit {
   ngOnInit(): void {
     this.pokemon.getPokemon(parseInt(this.id_pk)).subscribe((data:any) => {
       this.name = data.name;
+      this.type = data.type;
       this.image = data.image;
       this.pv = data.stats.hp;
       this.defense = data.stats.defense;
       this.attaque = data.stats.attack;
       this.vitesse = data.stats.speed;
+
     });;
   }
 
   isShow = false;
-  deletePokemon() {
+  deletePokemonFromDeck() {
+    console.log("ID pokemon: ", this.id_pk);
     this.isShow = !this.isShow;
-    this.pokemon.deletePokemon().subscribe((data:Array<string>) => {
-      this.cards = data;
-      console.log(data);
+    this.pokemon.deletePokemon(parseInt(this.id_pk)).subscribe((data:Array<string>) => {
     });
   }
 

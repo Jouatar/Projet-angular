@@ -64,45 +64,18 @@ export class PokemonService {
   }
 
   //Suppression d'un pokémon
-  deletePokemon(): Observable<Array<string>>{
+  deletePokemon(id: number): Observable<Array<string>>{
     var subject = new Subject<Array<string>>();
     this.userService.getData().subscribe((data:any) => {
         var table: Array<string> = [];
-        var returnTable: Array<string> = [];
-        this.userService.getData().subscribe((data:any) => {
-          data.deck.forEach((item:string) => {
-            table.push(item);
-          })
-          console.log(data);
-          this.userService.update(data.name, (data.coins+1), table).subscribe((data:any) => {
-            subject.next(returnTable);
+        var index = data.deck.indexOf(id.toString());
+        data.deck.splice(index, 1);
+        this.userService.update(data.name, (data.coins+1), data.deck).subscribe((data:any) => {
+            console.log(data);
+            subject.next(data.deck);
           });
-        });
     });
     return subject.asObservable() ;
   }
-
-  //Ajout d'un pokemon
-  // addPokemon(): Observable<Array<string>>{
-  //   var subject = new Subject<Array<string>>();
-
-  //   this.userService.getData().subscribe((data:any) => {
-  //       var table: Array<string> = [];
-  //       var returnTable: Array<string> = [];
-
-  //       this.userService.getData().subscribe((data:any) => {
-  //         data.deck.forEach((item:string) => {
-  //           table.push(item);
-  //         })
-  //         console.log(data);
-  //         this.userService.update(data.name, (data.coins), table).subscribe((data:any) => {
-  //           subject.next(returnTable);
-  //         });;
-  //       });;
-
-  //   });;
-
-  //   return subject.asObservable() ;
-  // }
 
 }
