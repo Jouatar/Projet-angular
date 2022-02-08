@@ -18,8 +18,6 @@ export class DeckComponent implements OnInit {
 
   constructor(private userService: UserServiceService, private pokemonService: PokemonService) { }
 
-
-
   ngOnInit(): void {
     this.userService.getData().subscribe((data: any) => {
       this.cards = data.deck;

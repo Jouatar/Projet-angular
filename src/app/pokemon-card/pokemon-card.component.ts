@@ -8,6 +8,7 @@ import { PokemonService } from 'src/app/pokemon.service';
 })
 export class PokemonCardComponent implements OnInit {
   @Input() id_pk: string = "1";
+  @Input() isStore: boolean = false;
   name: string = "";
   image: string = "";
   pv: number = 0;
