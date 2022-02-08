@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Subscription } from 'rxjs-compat';
 import { PokemonService } from 'src/app/pokemon.service';
+import { RefreshService } from '../refresh.service';
+import { UserServiceService } from '../user-service.service';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -15,7 +18,14 @@ export class PokemonCardComponent implements OnInit {
   defense: number = 0;
   attaque: number = 0;
   vitesse: number = 0;
-  constructor(private pokemon: PokemonService) { }
+  cards: Array<string> = [];
+  private subscriptionName: Subscription;
+
+  constructor(private pokemon: PokemonService,private userService: UserServiceService, private refresh: RefreshService) {
+    this.subscriptionName= this.refresh.getUpdate().subscribe
+    (message => {this.ngOnInit();
+    });
+   }
 
   ngOnInit(): void {
     this.pokemon.getPokemon(parseInt(this.id_pk)).subscribe((data:any) => {
@@ -26,6 +36,15 @@ export class PokemonCardComponent implements OnInit {
       this.attaque = data.stats.attack;
       this.vitesse = data.stats.speed;
     });;
+  }
+
+  isShow = false;
+  deletePokemon() {
+    this.isShow = !this.isShow;
+    this.pokemon.deletePokemon().subscribe((data:Array<string>) => {
+      this.cards = data;
+      console.log(data);
+    });
   }
 
 }

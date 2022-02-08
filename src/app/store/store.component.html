@@ -3,3 +3,9 @@
 <div class="container mt-5">
     <app-pokemon-card [isStore]="true" *ngFor="let card of cards" id="card{{card}}" [id_pk]="card"></app-pokemon-card>
 </div>
+
+<!-- <mat-grid-list cols="5">
+  <mat-grid-tile *ngFor="let card of cards">
+    <app-pokemon-card [isStore]="true"  id="card{{card}}" [id_pk]="card"></app-pokemon-card>
+  </mat-grid-tile>
+</mat-grid-list> -->

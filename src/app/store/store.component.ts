@@ -28,5 +28,11 @@ export class StoreComponent implements OnInit {
     });;
   }
 
+  // addPokemonToDeck() {
+  //   this.pokemon.addPokemon().subscribe((data:Array<string>) => {
+  //     this.cards = data;
+  //     console.log(data);
+  //   });;
+  // }
 
 }

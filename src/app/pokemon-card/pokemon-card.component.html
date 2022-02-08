@@ -1,5 +1,5 @@
-<div class="pokemon_card">
-    <button *ngIf="isStore">X</button>
+<div class="pokemon_card" *ngIf = "!isShow">
+    <button *ngIf="isStore" (click)="deletePokemon()">X</button>
     <div class="name text-center">{{name}}</div>
     <div class="image text-center"><img [src]="image"/></div>
     <div class="stats">
