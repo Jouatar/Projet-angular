@@ -32,7 +32,7 @@ export class FormLoginComponent implements OnInit {
     );
     this.userService.login(newUser.getName()).subscribe((data: Boolean) => {
       if (data) {
-        this.router.navigate(['home']);
+        this.router.navigate(['home/deck']);
       }
     });;
   }
