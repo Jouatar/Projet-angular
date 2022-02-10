@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Subscription } from 'rxjs-compat';
 import { PokemonService } from 'src/app/pokemon.service';
 import { RefreshService } from '../refresh.service';
@@ -12,6 +13,7 @@ import { UserServiceService } from '../user-service.service';
 export class PokemonCardComponent implements OnInit {
   @Input() id_pk: string = "1";
   @Input() isStore: boolean = false;
+  @Input() indexStore: number = -1;
   name: string = "";
   image: string = "";
   type: string = "";
@@ -22,7 +24,7 @@ export class PokemonCardComponent implements OnInit {
   cards: Array<string> = [];
   private subscriptionName: Subscription;
 
-  constructor(private pokemon: PokemonService,private userService: UserServiceService, private refresh: RefreshService) {
+  constructor(private pokemon: PokemonService,private userService: UserServiceService, private refresh: RefreshService, @Inject(DOCUMENT) document:Document) {
     this.subscriptionName= this.refresh.getUpdate().subscribe
     (message => {this.ngOnInit();
     });
@@ -45,6 +47,7 @@ export class PokemonCardComponent implements OnInit {
   deletePokemonFromDeck() {
     console.log("ID pokemon: ", this.id_pk);
     this.isShow = !this.isShow;
+    document.getElementsByClassName('card'+this.indexStore)[0].classList.add("hide");
     this.pokemon.deletePokemon(parseInt(this.id_pk)).subscribe((data:Array<string>) => {
     });
   }
